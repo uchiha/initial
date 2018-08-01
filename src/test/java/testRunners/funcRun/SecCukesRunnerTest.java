@@ -1,4 +1,4 @@
-package testRunners;
+package testRunners.funcRun;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
@@ -9,6 +9,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
     glue = {"stepdefinitions"},
     plugin = {"pretty", "html:target/cucumber-html-report"}
 )
-public class CukesRunnerTest extends AbstractTestNGCucumberTests{
+public class SecCukesRunnerTest extends AbstractTestNGCucumberTests{
+
 
 }

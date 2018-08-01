@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 // browser driver (any browsers)
 public class BrowserDriver {
 	
-	public static WebDriver driver;
+	private static WebDriver driver;
 	
 	public static WebDriver getDriver() {
 		return BrowserDriver.driver;
