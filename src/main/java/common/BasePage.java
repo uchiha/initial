@@ -12,18 +12,20 @@ public class BasePage {
 
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
-//		new WebDriverWait(driver, timeOut).until(((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete")); <- work on this
-		
+		// new WebDriverWait(driver,
+		// timeOut).until(((JavascriptExecutor)driver).executeScript("return
+		// document.readyState").equals("complete")); <- needs work
+
 	}
 
 	protected WebElement findById(String loc) {
 		return new WebDriverWait(driver, timeOut).until(ExpectedConditions.visibilityOfElementLocated(By.id(loc)));
 	}
-	
+
 	protected WebElement findByXPath(String loc) {
 		return new WebDriverWait(driver, timeOut).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(loc)));
 	}
-	
+
 	protected WebElement findByName(String loc) {
 		return new WebDriverWait(driver, timeOut).until(ExpectedConditions.visibilityOfElementLocated(By.name(loc)));
 	}
