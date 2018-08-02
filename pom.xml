@@ -42,22 +42,65 @@
         <groupId>org.testng</groupId>
         <artifactId>testng</artifactId>
         <version>6.9.10</version>
-        <scope>test</scope>
+        <!-- <scope>test</scope> -->
       </dependency>
+      <!-- https://mvnrepository.com/artifact/commons-io/commons-io 
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.4</version>
+      </dependency>
+      -->
   </dependencies>
   
+  <properties>
+    <acttimestamp>${maven.build.timestamp}</acttimestamp>
+    <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+  </properties>
+ 
   <build>
     <plugins>
+      <!-- Surefire plugin settings -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.0</version>
         <configuration>
+          <systemPropertyVariables>
+            <timestamp>${acttimestamp}</timestamp>
+          </systemPropertyVariables>
           <suiteXmlFiles>
             <suiteXmlFile>testng.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>
+      <!-- END OF Surefire plugin settings -->
+      
+      <!-- Maven resources plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/reports/cucumber-reports/${acttimestamp}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/target/cucumber-html-report</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- END OF Maven resources plugin -->
     </plugins>
   </build>
 </project>
