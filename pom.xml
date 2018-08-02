@@ -44,13 +44,6 @@
         <version>6.9.10</version>
         <!-- <scope>test</scope> -->
       </dependency>
-      <!-- https://mvnrepository.com/artifact/commons-io/commons-io 
-      <dependency>
-        <groupId>commons-io</groupId>
-        <artifactId>commons-io</artifactId>
-        <version>2.4</version>
-      </dependency>
-      -->
   </dependencies>
   
   <properties>
@@ -75,6 +68,33 @@
         </configuration>
       </plugin>
       <!-- END OF Surefire plugin settings -->
+      
+      <!-- Failsafe plugin settings -->
+      <!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>2.22.0</version>
+        <executions>
+          <execution>
+            <id>verify</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>verify</goal>
+            </goals>
+            <configuration>
+              <systemPropertyVariables>
+                <timestamp>${acttimestamp}</timestamp>
+              </systemPropertyVariables>
+              <suiteXmlFiles>
+                <suiteXmlFile>testng.xml</suiteXmlFile>
+              </suiteXmlFiles>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      -->
+      <!-- END OF Failsafe plugin settings -->
       
       <!-- Maven resources plugin -->
       <plugin>
