@@ -38,18 +38,6 @@ public class BasePage {
 		}
 		return byObject;
 	}
-
-	protected WebElement findById(String loc) {
-		return new WebDriverWait(driver, timeOut).until(ExpectedConditions.visibilityOfElementLocated(By.id(loc)));
-	}
-
-	protected WebElement findByXPath(String loc) {
-		return new WebDriverWait(driver, timeOut).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(loc)));
-	}
-
-	protected WebElement findByName(String loc) {
-		return new WebDriverWait(driver, timeOut).until(ExpectedConditions.visibilityOfElementLocated(By.name(loc)));
-	}
 	
 	protected WebElement findTheElementUntilVisible(LocatorWrapper samp) {
 		WebElement elem = null;
