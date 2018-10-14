@@ -4,9 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import common.BasePage;
+import common.LocatorWrapper;
 
 public class TwitterUserHomePage extends BasePage {
-	private String dashboardProfileNameLoc = "//div[contains(@class,'DashboardProfileCard-content')]/..//a[contains(@class,'u-textInheritColor')]";
+		
+	private static final LocatorWrapper DASHBOARD_PROFILE = 
+			new LocatorWrapper("Dashboard Name", "//div[contains(@class,'DashboardProfileCard-content')]/..//a[contains(@class,'u-textInheritColor')]", LocatorWrapper.LocatorType.XPATH);
 
 	public TwitterUserHomePage(WebDriver driver) {
 		super(driver);
@@ -15,7 +18,7 @@ public class TwitterUserHomePage extends BasePage {
 	public boolean verifyDashboardProfileName(String fullName) {
 
 		boolean correctNameFound = false;
-		WebElement profileName = findByXPath(dashboardProfileNameLoc);
+		WebElement profileName = findTheElementUntilVisible(DASHBOARD_PROFILE);
 
 		// check that the text of profileName
 		// in fact contains the set full name
